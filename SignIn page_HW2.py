@@ -18,7 +18,7 @@ driver.get('https://www.target.com/')
 # Navigate to the right page
 driver.find_element(By.XPATH, "//span[text()='Sign in']").click()
 driver.find_element(By.XPATH, "//button[@data-test='accountNav-signIn']").click()
-sleep(3)
+
 
 # Verification
 expected_result = 'Sign into your Target account'
