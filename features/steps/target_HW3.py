@@ -20,17 +20,17 @@ def verify_cart_icon_open(context):
     assert expected_result == actual_result, f'Expected test {expected_result} does not match actual test{actual_result}'
 
 
-    @when('Click sign button on the right top corner')
-    def click_sign_button(context):
-        context.driver.find_element(By.CSS_SELECTOR, "#account-sign-in").click()
+@when('Click sign button on the right top corner')
+def click_sign_button(context):
+    context.driver.find_element(By.CSS_SELECTOR, "#account-sign-in").click()
 
 
-    @when('From right side navigation menu, click Sign In')
-    def click_sign_in(context):
-        context.driver.find_element(By.CSS_SELECTOR, "[data-test='accountNav-signIn']").click()
+@when('From right side navigation menu, click Sign In')
+def click_sign_in(context):
+    context.driver.find_element(By.CSS_SELECTOR, "[data-test='accountNav-signIn']").click()
 
-    @then('Verify Sign In form opened')
-    def verify_sign_in(context):
-        context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
+@then('Verify Sign In form opened')
+def verify_sign_in(context):
+    context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
 
     sleep(3)
