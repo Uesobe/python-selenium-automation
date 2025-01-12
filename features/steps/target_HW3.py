@@ -25,15 +25,18 @@ def verify_cart_icon_open(context):
 
 @when('Click signIn button on the right top corner')
 def click_sign_button(context):
-    context.driver.find_element(By.CSS_SELECTOR, "#account-sign-in").click()
+    context.app.header.click_sign_in()
+    #context.driver.find_element(By.CSS_SELECTOR, "#account-sign-in").click()
 
 
 @when('From right side navigation menu, click Sign In')
 def click_sign_in(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='accountNav-signIn']").click()
+    context.app.header.click_right_nav_sign_in()
+    #context.driver.find_element(By.CSS_SELECTOR, "[data-test='accountNav-signIn']").click()
 
 @then('Verify Sign In form opened')
 def verify_sign_in(context):
-    context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
+    context.app.sign_in_page.verify_sign_in()
+    #context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']")
 
     sleep(4)

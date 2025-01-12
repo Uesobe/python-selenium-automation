@@ -20,12 +20,14 @@ def click_target_circle(context):
 
 @when('Click on Add to cart')
 def click_target_cart(context):
+    context.app.search_results_page.click_add_to_cart()
     #context.driver.wait.until(EC.element_located_to_be_selected(ADD_TO_CART_BTN)).click()
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='chooseOptionsButton']").click()
+    #context.driver.find_element(By.CSS_SELECTOR, "[data-test='chooseOptionsButton']").click()
 
 @when('Click on the Add to Cart on the side bar')
 def click_target_cart_side_bar(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCartButton']").click()
+    context.app.search_results_page.click_sidebar_add_to_cart()
+    #context.driver.find_element(By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCartButton']").click()
 
 
 @when('Open cart page')
@@ -49,8 +51,9 @@ def verify_search_result(context, expected_product):
 
 @then('Verify {expected_product} is in cart')
 def verify_tea(context, expected_product):
-    actual_product = context.driver.find_element(By.CSS_SELECTOR, "div[data-test='cartItem-title']").text
-    assert expected_product in actual_product, f'Expected text {expected_product} not in actual {actual_product}'
+    context.app.cart_page.verify_product_in_cart()
+    #actual_product = context.driver.find_element(By.CSS_SELECTOR, "div[data-test='cartItem-title']").text
+    #assert expected_product in actual_product, f'Expected text {expected_product} not in actual {actual_product}'
 
 
 

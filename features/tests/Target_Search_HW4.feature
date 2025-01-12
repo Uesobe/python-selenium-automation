@@ -32,7 +32,7 @@ Feature: Target search tests
     And Click on Add to cart
     And Click on the Add to Cart on the side bar
     And Open cart page
-    Then Verify Tea is in cart
+    Then Verify tea is in cart
 
 
 

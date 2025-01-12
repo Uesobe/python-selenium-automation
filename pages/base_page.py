@@ -18,3 +18,7 @@ class BasePage:
 
     def input_text(self, text, *locator,):
         self.driver.find_element(*locator).send_keys(text)
+
+    def verify_partial_text(self, expected_text, *locator,):
+        actual_text = self.driver.find_element(*locator).text
+        assert expected_text in actual_text, f'Expected {expected_text} not in actual {actual_text}'
