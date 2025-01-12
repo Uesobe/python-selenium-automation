@@ -1,12 +1,17 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+
+ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[data-test='chooseOptionsButton']")
+
 
 @when('Search for {product}')
 def search_for_product(context, product):
-    context.driver.find_element(By.ID, 'search').send_keys(product)
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/Search/SearchButton']").click()
-    sleep(9)
+    context.app.header.search_product()
+    #context.driver.find_element(By.ID, 'search').send_keys(product)
+    #context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/Search/SearchButton']").click()
+    #sleep(9)
 
 @when('Click target circle icon')
 def click_target_circle(context):
@@ -15,8 +20,8 @@ def click_target_circle(context):
 
 @when('Click on Add to cart')
 def click_target_cart(context):
+    #context.driver.wait.until(EC.element_located_to_be_selected(ADD_TO_CART_BTN)).click()
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='chooseOptionsButton']").click()
-
 
 @when('Click on the Add to Cart on the side bar')
 def click_target_cart_side_bar(context):
@@ -37,8 +42,9 @@ def verify_atleast_10_benefit(context):
 
 @then('Verify search result is shown for {expected_product}')
 def verify_search_result(context, expected_product):
-    actual_result = context.driver.find_element(By. CSS_SELECTOR, "[data-test='resultsHeading']").text
-    assert expected_product in actual_result, f'Expected text {expected_product} not in actual {actual_result}'
+    context.app.search_results_page.verify_search_result()
+    #actual_result = context.driver.find_element(By. CSS_SELECTOR, "[data-test='resultsHeading']").text
+    #assert expected_product in actual_result, f'Expected text {expected_product} not in actual {actual_result}'
 
 
 @then('Verify {expected_product} is in cart')

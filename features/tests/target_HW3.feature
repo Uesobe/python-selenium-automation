@@ -12,6 +12,6 @@ Feature: Cart icon test
 
   Scenario: Logged out user can navigate to sign in page
     Given Open target main page
-    When Click sign button on the right top corner
+    When Click signIn button on the right top corner
     When From right side navigation menu, click Sign In
     Then Verify Sign In form opened
